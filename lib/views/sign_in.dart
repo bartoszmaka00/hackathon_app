@@ -71,7 +71,11 @@ class _SignInState extends State<SignIn> {
                   ),
                   ElevatedButton(
                       onPressed: () => Navigator.pushNamed(context, '/qr_test'),
-                      child: Text('Test qr'))
+                      child: Text('Test qr')),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(context, '/loading'),
+                    child: Text('Test loading'),
+                  )
                 ],
               ),
             ),
