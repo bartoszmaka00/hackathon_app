@@ -1,3 +1,4 @@
+import 'package:biker_mice_from_mars/services/point_history_provider.dart';
 import 'package:flutter/material.dart';
 import 'shared/routes.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthorizationProvider()),
+        ChangeNotifierProvider(create: (context) => PointHistoryProvider()),
       ],
       child: GestureDetector(
         onTap: () {

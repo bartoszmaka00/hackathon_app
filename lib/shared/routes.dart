@@ -5,6 +5,8 @@ import '../views/sign_up.dart';
 import '../views/menu.dart';
 import '../views/qr_view.dart';
 import '../views/loading_screen.dart';
+import '../views/points_history.dart';
+import '../views/privileges.dart';
 
 var myRoutes = <String, WidgetBuilder>{
   '/': (context) => SignIn(),
@@ -13,4 +15,6 @@ var myRoutes = <String, WidgetBuilder>{
   '/sign_up': (context) => SignUp(),
   '/qr_test': (context) => QRViewExample(),
   '/loading': (context) => Loading(),
+  '/history': (context) => PointsHistory(),
+  '/privileges': (context) => Privileges(),
 };
