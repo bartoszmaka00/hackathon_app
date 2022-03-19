@@ -40,7 +40,7 @@ class _MenuState extends State<Menu> {
     var authorizationProvider =
         Provider.of<AuthorizationProvider>(context, listen: false);
     int points = authorizationProvider.user.points;
-    return Scaffold(
+    return isVisibleLoading? Loading():Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: miceLightGreen,
       appBar: AppBar(
