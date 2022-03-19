@@ -90,8 +90,9 @@ class AuthorizationProvider extends ChangeNotifier {
     }
   }
 
-  void updatePoints(int points) {
+  void updatePoints(int points, double carbon) {
     user.points = points;
+    user.carbonFootprint = carbon;
     notifyListeners();
   }
 

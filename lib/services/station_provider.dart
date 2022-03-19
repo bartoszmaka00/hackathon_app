@@ -91,10 +91,12 @@ class StationProvider extends ChangeNotifier {
           }));
       print('update ${response.statusCode}');
       if (response.statusCode == 200) {
-        int points = int.parse(jsonDecode(response.body)['updated_points']);
+        int points = (jsonDecode(response.body)['updated_points']);
+        double carbon =
+            double.parse((jsonDecode(response.body)['updated_carbon_saved']));
         var authorizationProvider =
             Provider.of<AuthorizationProvider>(context, listen: false);
-        authorizationProvider.updatePoints(points);
+        authorizationProvider.updatePoints(points, carbon);
         _station = Station(
             startTime: DateTime(0),
             finishTime: DateTime(0),

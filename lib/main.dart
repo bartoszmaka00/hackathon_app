@@ -9,6 +9,7 @@ import 'shared/routes.dart';
 import 'package:provider/provider.dart';
 import 'services/authorization.dart';
 import 'services/station_provider.dart';
+import 'services/privileges_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthorizationProvider()),
         ChangeNotifierProvider(create: (context) => PointHistoryProvider()),
-        ChangeNotifierProvider(create: (context) => StationProvider())
+        ChangeNotifierProvider(create: (context) => StationProvider()),
+        ChangeNotifierProvider(create: (context) => PrivilegesProvider())
       ],
       child: GestureDetector(
         onTap: () {
@@ -46,7 +48,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({Key? key}) : super(key: key);
 
@@ -55,15 +56,10 @@ class MyBottomNavigationBar extends StatefulWidget {
 }
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
-
   int _currentIndex = 0;
-  final List<Widget> _children = [
-    Menu(),
-    PointsHistory(),
-    Privileges()
-  ];
+  final List<Widget> _children = [Menu(), PointsHistory(), Privileges()];
 
-  void onTappedBar(int index){
+  void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
     });
@@ -94,4 +90,3 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     );
   }
 }
-

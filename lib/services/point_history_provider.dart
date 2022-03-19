@@ -30,6 +30,7 @@ class PointHistoryProvider extends ChangeNotifier {
         return _pointHistoryList;
       }
     } catch (e) {
+      print(e);
       notifyListeners();
       return _pointHistoryList;
     }

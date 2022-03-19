@@ -16,6 +16,7 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
   bool isVisibleLoading = false;
+  int points = 0;
   @override
   void initState() {
     super.initState();
@@ -23,6 +24,7 @@ class _MenuState extends State<Menu> {
   }
 
   Future<Null> _load() async {
+    // int points;
     setState(() {
       isVisibleLoading = true;
     });
@@ -32,6 +34,9 @@ class _MenuState extends State<Menu> {
                 .user
                 .bearerToken);
     setState(() {
+      points = Provider.of<AuthorizationProvider>(context, listen: false)
+          .user
+          .points;
       isVisibleLoading = false;
     });
   }
@@ -41,7 +46,7 @@ class _MenuState extends State<Menu> {
         Provider.of<AuthorizationProvider>(context, listen: false);
     var stationProvider = Provider.of<StationProvider>(context, listen: false);
     // stationProvider.station.startStation == 0
-    int points = authorizationProvider.user.points;
+    // int points = authorizationProvider.user.points;
     bool isVisibleExit =
         stationProvider.station.startStation == 0 ? false : true;
     return isVisibleLoading
