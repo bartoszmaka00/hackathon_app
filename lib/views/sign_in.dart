@@ -25,7 +25,9 @@ class _SignInState extends State<SignIn> {
     return isVisibleLoading
         ? Loading()
         : Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: miceLightGreen,
+
             body: Form(
             key: _formKey,
             child: SafeArea(
@@ -95,24 +97,20 @@ class _SignInState extends State<SignIn> {
                           onPressed: () => _signInButton(),
                           child: Text('Log In')),
                     ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(
-                                  color: miceLightGreen,
-                                  width: 2.0,
-                                ),
-                              ),
+                    SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Don\'t have an account? '),
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, '/sign_up'),
+                          child: Text('Signup here',
+                            style: TextStyle(
+                              color: miceDarkGreen,
                             ),
                           ),
-                          onPressed: () => Navigator.pushNamed(context, '/sign_up'),
-                          child: Text('Sign up')),
+                        ),
+                      ],
                     ),
                     Visibility(
                       child: Text(

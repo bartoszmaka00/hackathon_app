@@ -28,13 +28,19 @@ class _SignUpState extends State<SignUp> {
     return isVisibleLoading
         ? Loading()
         : Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: miceLightGreen,
+            appBar: AppBar(
+              backgroundColor: miceDarkGreen,
+              centerTitle: true,
+              title: Text('Registration'),
+            ),
             body: Form(
             key: _formKey,
             child: SafeArea(
               minimum: EdgeInsets.all(20),
               child: Container(
-                margin: EdgeInsets.fromLTRB(10.0, 105.0, 10.0, 105.0),
+                margin: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 100.0),
                 padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -141,24 +147,7 @@ class _SignUpState extends State<SignUp> {
                           onPressed: () => _signUpButton(), child: Text('Sign up')),
                     ),
                     SizedBox(height: 10),
-                    SizedBox(
-                      width: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(
-                                  color: miceLightGreen,
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          onPressed: () => Navigator.pushNamed(context, '/sign_in'),
-                          child: Text('Log in')),
-                    ),
+
                     Visibility(
                       child: Text(
                         error,
