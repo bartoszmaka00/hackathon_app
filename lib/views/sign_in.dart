@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
             child: SafeArea(
               minimum: EdgeInsets.all(25),
               child: Container(
-                margin: EdgeInsets.fromLTRB(10.0, 200.0, 10.0, 200.0),
+                margin: EdgeInsets.fromLTRB(10.0, 190.0, 10.0, 190.0),
                 padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -42,6 +42,13 @@ class _SignInState extends State<SignIn> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('Login',
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 30),
                     TextFormField(
                       validator: (value) {
                         return emailValidator(value, 'Please enter your email');
