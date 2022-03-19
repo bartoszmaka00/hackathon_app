@@ -124,7 +124,7 @@ class _MenuState extends State<Menu> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ABeeZee',
-                                  fontSize: 12,
+                                  fontSize: 20,
                                 ),
                               ),
                               Text(
@@ -250,7 +250,7 @@ class _MenuState extends State<Menu> {
                                 ),
                                 SizedBox(width: 10),
                                 Text(
-                                  'Purchase',
+                                  'Eco - Purchase',
                                   style: TextStyle(
                                     fontSize: !isVisibleExit
                                         ? mainMenuButtonFontSize
@@ -380,7 +380,7 @@ class _MenuState extends State<Menu> {
                               height: mainMenuButonHeightSmall,
                               child: Column(
                                 children: [
-                                  Text('You have already started a ride.'),
+                                  // Text('You have already started a ride.'),
                                   ElevatedButton(
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all<
@@ -389,7 +389,7 @@ class _MenuState extends State<Menu> {
                                           borderRadius:
                                               BorderRadius.circular(18.0),
                                           side: BorderSide(
-                                            color: miceLightGreen,
+                                            color: micemiddleGreen,
                                             width: 2.0,
                                           ),
                                         ),
