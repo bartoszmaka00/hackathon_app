@@ -47,16 +47,19 @@ class _PrivilegesState extends State<Privileges> {
         Provider.of<PrivilegesProvider>(context, listen: false);
     var userPrivilegesProvider =
         Provider.of<UserPrivilegesProvider>(context, listen: false);
+    var authorizationProvider =
+        Provider.of<AuthorizationProvider>(context, listen: false);
     List<Privilege> privilegeList = privilegesProvider.privileges;
     List<UserPrivilege> userPrivilegeList =
         userPrivilegesProvider.userPrivileges;
+    int points = authorizationProvider.user.points;
     return isVisibleLoading
         ? Loading()
         : Scaffold(
             appBar: AppBar(
               backgroundColor: miceDarkGreen,
               centerTitle: true,
-              title: Text('Privileges'),
+              title: Text('You have $points points left'),
             ),
             backgroundColor: miceLightGreen,
             body: SafeArea(
@@ -64,38 +67,57 @@ class _PrivilegesState extends State<Privileges> {
               child: Container(
                 width: 400,
                 padding: EdgeInsets.all(10),
-                child: ListView(
+                child: ListView.builder(
+                  itemCount: privilegeList.length,
                   padding: EdgeInsets.all(10),
-                  children: [
-                    for (Privilege privilege in privilegeList)
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              print(userPrivilegeList);
-                            },
-                            splashColor: Colors.blue,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  color: miceDarkGreen,
-                                ),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: ListTile(
-                                focusColor: miceLightGreen,
-                                leading: Icon(
-                                  Icons.person,
-                                  color: Colors.black,
-                                ),
-                                title: Text('${privilege.title}'),
-                                subtitle: Text('Price: ${privilege.price}'),
-                              ),
+                  itemBuilder: (BuildContext context, int index) => Column(
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          bool wasPurchaseSuccessful =
+                              await userPrivilegesProvider.purchasePrivilege(
+                                  authorizationProvider.user.bearerToken,
+                                  privilegeList.elementAt(index).id,
+                                  privilegeList.elementAt(index).duration);
+                          if (wasPurchaseSuccessful) {
+                            userPrivilegeList =
+                                await userPrivilegesProvider.getUserPrivileges(
+                                    authorizationProvider.user.bearerToken);
+                            authorizationProvider.updateOnlyPoints(points);
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Purchase successful'),
+                            ));
+                            setState(() {
+                              points = authorizationProvider.getUpdatedPoints();
+                            });
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Purchase unsuccessful'),
+                            ));
+                          }
+                        },
+                        splashColor: Colors.blue,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: miceDarkGreen,
                             ),
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
-                        ],
-                      )
-                  ],
+                          child: ListTile(
+                            focusColor: miceLightGreen,
+                            leading: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                            ),
+                            title: Text(privilegeList.elementAt(index).title),
+                            subtitle:
+                                Text('${privilegeList.elementAt(index).price}'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -96,6 +96,12 @@ class AuthorizationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int updateOnlyPoints(int points) {
+    user.points = points;
+    notifyListeners();
+    return user.points;
+  }
+
   int getUpdatedPoints() {
     return user.points;
   }
