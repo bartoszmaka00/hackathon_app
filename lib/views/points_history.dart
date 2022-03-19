@@ -3,7 +3,6 @@ import 'package:biker_mice_from_mars/services/point_history_provider.dart';
 import 'package:biker_mice_from_mars/shared/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:biker_mice_from_mars/services/point_history_provider.dart';
 import 'package:biker_mice_from_mars/views/loading_screen.dart';
 
 import '../models/point_history.dart';
@@ -45,9 +44,17 @@ class _PointsHistoryState extends State<PointsHistory> {
         ? Loading()
         : Scaffold(
             appBar: AppBar(
-              backgroundColor: miceDarkGreen,
+              //toolbarHeight: 90,
+              elevation: 1,
+              backgroundColor: miceLightGreen,
               centerTitle: true,
-              title: Text('Your history:'),
+              //automaticallyImplyLeading: false,
+              title: Text("Your history",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'ABeeZee',
+                ),)
             ),
             backgroundColor: miceLightGreen,
             body: SafeArea(
@@ -72,9 +79,17 @@ class _PointsHistoryState extends State<PointsHistory> {
                               focusColor: miceLightGreen,
                               leading: getTypeByName(pointHistory.transportationType),
                               subtitle: Text(
-                                  '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}'),
+                                  '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}',
+                                style: TextStyle(
+                                  fontFamily: 'ABeeZee',
+                                ),
+                              ),
                               title: Text(
-                                  'Points acquired: ${pointHistory.points}'),
+                                  'Points acquired: ${pointHistory.points}',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'ABeeZee',
+                                ),),
                             ),
                           ),
                         ],

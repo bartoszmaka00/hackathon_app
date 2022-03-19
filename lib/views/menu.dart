@@ -91,16 +91,16 @@ class _MenuState extends State<Menu> {
                               SizedBox(height: 45,),
                               Text('Carbon saved:',
                                 style: TextStyle(
-                                  color: Colors.black54,
+                                  color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                  fontFamily: 'Courgette',
+                                  fontFamily: 'ABeeZee',
                                 ),
                               ),
                               Text('${authorizationProvider.user.carbonFootprint} kg',
                                 style: TextStyle(
-                                  color: Colors.black54,
+                                  color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                  fontFamily: 'Courgette',
+                                  fontFamily: 'ABeeZee',
                                 ),
                               ),
                             ],
@@ -115,15 +115,15 @@ class _MenuState extends State<Menu> {
                               SizedBox(height: 45,),
                               Text('Points:',
                                 style: TextStyle(
-                                  color: Colors.black54,
+                                  color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                  fontFamily: 'Courgette',
+                                  fontFamily: 'ABeeZee',
                                 ),),
                               Text('$points',
                                 style: TextStyle(
-                                  color: Colors.black54,
+                                  color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                  fontFamily: 'Courgette',
+                                  fontFamily: 'ABeeZee',
                                 ),),
                             ],
                           ),
@@ -151,7 +151,6 @@ class _MenuState extends State<Menu> {
                         // SizedBox(
                         //   height: 20,
                         // ),
-                        SizedBox(height: 20,),
                         SizedBox(
                           width: !isVisibleExit
                               ? mainMenuButonWidth
@@ -179,19 +178,20 @@ class _MenuState extends State<Menu> {
                               children: [
                                 Icon(
                                   Icons.settings_overscan,
-                                  color: Colors.black54,
+                                  color: Colors.black,
                                   size: !isVisibleExit
                                       ? mainMenuButtonFontSize + 10
                                       : mainMenuButtonFontSizeSmall + 10,
                                 ),
                                 Text(
-                                  ' Scan QR Code',
+                                  ' Scan QR Code (J)',
                                   style: TextStyle(
                                     fontSize: !isVisibleExit
                                         ? mainMenuButtonFontSize
                                         : mainMenuButtonFontSizeSmall,
-                                    color: Colors.black54,
-                                    fontFamily: 'Courgette',
+                                    color: Colors.black,
+                                    fontFamily: 'ABeeZee',
+
                                   ),
                                 ),
                               ],
@@ -209,90 +209,153 @@ class _MenuState extends State<Menu> {
                               ? mainMenuButonHeight
                               : mainMenuButonHeightSmall,
                           child: ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                      color: micemiddleGreen,
-                                      width: 2.0,
-                                    ),
+                            style: ButtonStyle(
+                              shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(
+                                    color: micemiddleGreen,
+                                    width: 2.0,
                                   ),
                                 ),
                               ),
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/history'),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.article_outlined,
-                                    color: Colors.black54,
-                                    size: !isVisibleExit
-                                        ? mainMenuButtonFontSize + 10
-                                        : mainMenuButtonFontSizeSmall + 10,
+                            ),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, '/qr_purchase'),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.settings_overscan,
+                                  color: Colors.black,
+                                  size: !isVisibleExit
+                                      ? mainMenuButtonFontSize + 10
+                                      : mainMenuButtonFontSizeSmall + 10,
+                                ),
+                                Text(
+                                  ' Scan QR Code (P)',
+                                  style: TextStyle(
+                                    fontSize: !isVisibleExit
+                                        ? mainMenuButtonFontSize
+                                        : mainMenuButtonFontSizeSmall,
+                                    color: Colors.black,
+                                    fontFamily: 'ABeeZee',
                                   ),
-                                  Text(
-                                    ' History',
-                                    style: TextStyle(
-                                      fontSize: !isVisibleExit
-                                          ? mainMenuButtonFontSize
-                                          : mainMenuButtonFontSizeSmall,
-                                      color: Colors.black54,
-                                      fontFamily: 'Courgette',
-                                    ),
-                                  ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                        SizedBox(height: 20),
                         SizedBox(
-                          width: !isVisibleExit
-                              ? mainMenuButonWidth
-                              : mainMenuButonWidthSmall,
-                          height: !isVisibleExit
-                              ? mainMenuButonHeight
-                              : mainMenuButonHeightSmall,
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                      color: micemiddleGreen,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/privileges'),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.wallet_giftcard,
-                                    color: Colors.black54,
-                                    size: !isVisibleExit
-                                        ? mainMenuButtonFontSize + 10
-                                        : mainMenuButtonFontSizeSmall + 10,
-                                  ),
-                                  Text(
-                                    ' My privileges',
-                                    style: TextStyle(
-                                      fontSize: !isVisibleExit
-                                          ? mainMenuButtonFontSize
-                                          : mainMenuButtonFontSizeSmall,
-                                      fontFamily: 'Courgette',
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                ],
-                              )),
+                          height: 20,
                         ),
-                        SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: !isVisibleExit
+                                  ? mainMenuButonWidth/2.25
+                                  : mainMenuButonWidthSmall/2.25,
+                              height: !isVisibleExit
+                                  ? mainMenuButonHeight
+                                  : mainMenuButonHeightSmall,
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(18.0),
+                                        side: BorderSide(
+                                          color: micemiddleGreen,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, '/history'),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.article_outlined,
+                                        color: Colors.black,
+                                        size: !isVisibleExit
+                                            ? mainMenuButtonFontSize
+                                            : mainMenuButtonFontSize ,
+                                      ),
+                                      Text(
+                                        ' History',
+                                        style: TextStyle(
+                                          fontSize: !isVisibleExit
+                                              ? mainMenuButtonFontSize-8
+                                              : mainMenuButtonFontSize-8,
+                                          color: Colors.black,
+                                          fontFamily: 'ABeeZee',
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            SizedBox(
+                              width: !isVisibleExit
+                                  ? mainMenuButonWidth/2.25
+                                  : mainMenuButonWidthSmall/2.25,
+                              height: !isVisibleExit
+                                  ? mainMenuButonHeight
+                                  : mainMenuButonHeightSmall,
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(18.0),
+                                        side: BorderSide(
+                                          color: micemiddleGreen,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, '/privileges')
+                                        .then((_) => setState(() {
+                                      points = authorizationProvider
+                                          .getUpdatedPoints();
+                                    })),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.wallet_giftcard,
+                                        color: Colors.black,
+                                        size: !isVisibleExit
+                                            ? mainMenuButtonFontSize
+                                            : mainMenuButtonFontSize ,
+                                      ),
+                                      Text(
+                                        ' Benefits',
+                                        style: TextStyle(
+                                          fontSize: !isVisibleExit
+                                              ? mainMenuButtonFontSize-8
+                                              : mainMenuButtonFontSize-8,
+                                          fontFamily: 'ABeeZee',
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                          ],
+
+                        ),
+                        SizedBox(height: !isVisibleExit
+                            ? 0
+                            : 15),
                         Visibility(
                           visible: isVisibleExit,
                           child: SizedBox(
@@ -335,6 +398,7 @@ class _MenuState extends State<Menu> {
                                             ? mainMenuButtonFontSize
                                             : mainMenuButtonFontSizeSmall,
                                         color: Colors.black,
+                                        fontFamily: 'ABeeZee',
                                       ),
                                     ),
                                   ],

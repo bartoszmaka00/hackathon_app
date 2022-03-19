@@ -9,10 +9,10 @@ const Color micemiddleGreen = Color(0xFFF98F46C);
 
 const double mainMenuButonHeight=100.0;
 const double mainMenuButonWidth=300.0;
-const double mainMenuButonHeightSmall=120.0;
+const double mainMenuButonHeightSmall=70.0;
 const double mainMenuButonWidthSmall=300.0;
-const double mainMenuButtonFontSize=30;
-const double mainMenuButtonFontSizeSmall=20;
+const double mainMenuButtonFontSize=25;
+const double mainMenuButtonFontSizeSmall=15;
 const double circlesize = 50;
 
 class Palette {

@@ -91,6 +91,10 @@ flutter:
     - family: Courgette
       fonts:
         - asset: assets/Courgette-Regular.ttf
+    - family: ABeeZee
+      fonts:
+        - asset: assets/ABeeZee-Regular.ttf
+        - asset: assets/ABeeZee-Italic.ttf
 
 
 

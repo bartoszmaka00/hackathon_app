@@ -65,9 +65,14 @@ class _PrivilegesState extends State<Privileges> {
         ? Loading()
         : Scaffold(
             appBar: AppBar(
-              backgroundColor: miceDarkGreen,
+              backgroundColor: miceLightGreen,
               centerTitle: true,
-              title: Text('You have $points points left'),
+              elevation: 1,
+              title: Text('You have $points points left',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'ABeeZee',
+                ),),
             ),
             backgroundColor: miceLightGreen,
             body: SafeArea(

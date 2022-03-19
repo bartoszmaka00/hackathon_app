@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:biker_mice_from_mars/models/station.dart';
 import 'package:biker_mice_from_mars/services/authorization.dart';
 import 'package:biker_mice_from_mars/services/station_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'dart:developer';
 import 'dart:io';
 import 'package:provider/provider.dart';
-import 'package:biker_mice_from_mars/services/station_provider.dart';
 
 class QRViewExample2 extends StatefulWidget {
   const QRViewExample2({Key? key}) : super(key: key);
@@ -172,10 +170,10 @@ class _QRViewExampleState2 extends State<QRViewExample2> {
       bool wasPurchaseSuccessful = await provider.purchasePoints(
           authorization.user.bearerToken, price, category, context);
       if (wasPurchaseSuccessful) {
-        Navigator.pushNamed(context, '/purchase_menu');
+        Navigator.pushNamed(context, '/menu');
       } else {
         print('NIE UDALO SIE KUPIC!!!');
-        Navigator.pushNamed(context, '/purchase_menu');
+        Navigator.pushNamed(context, '/menu');
       }
       // if (provider.station.startStation! > 0) {
       //   bool wasCreateSuccessful = await provider.updateStationSession(

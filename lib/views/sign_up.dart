@@ -30,10 +30,18 @@ class _SignUpState extends State<SignUp> {
         : Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: miceLightGreen,
+
             appBar: AppBar(
-              backgroundColor: miceDarkGreen,
+                toolbarHeight: 90,
+              automaticallyImplyLeading: false,
+              elevation: 1,
+              backgroundColor: miceLightGreen,
               centerTitle: true,
-              title: Text('Registration'),
+                title: Image(
+                  image: AssetImage('assets/logo.png'),
+                  width: 110,
+                  height: 110,)
+
 
             ),
             body: Form(
@@ -41,7 +49,7 @@ class _SignUpState extends State<SignUp> {
             child: SafeArea(
               minimum: EdgeInsets.all(20),
               child: Container(
-                margin: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 100.0),
+                margin: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 50.0),
                 padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -106,7 +114,9 @@ class _SignUpState extends State<SignUp> {
                       validator: (value) {
                         return passwordValidator(value, 6);
                       },
+                      obscureText: true,
                       decoration: InputDecoration(
+
                         hintText: 'Password',
                       ),
                       onChanged: (value) {
@@ -120,6 +130,8 @@ class _SignUpState extends State<SignUp> {
                       validator: (value) {
                         return passwordConfirmationValidator(value, password, 6);
                       },
+                      obscureText: true,
+
                       decoration: InputDecoration(
                         hintText: 'Password confirmation',
                       ),

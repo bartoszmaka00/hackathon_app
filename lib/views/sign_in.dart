@@ -75,6 +75,8 @@ class _SignInState extends State<SignIn> {
                           validator: (value) {
                             return passwordValidator(value, 6);
                           },
+                          obscureText: true,
+
                           decoration: InputDecoration(
                             hintText: 'Password',
                           ),
