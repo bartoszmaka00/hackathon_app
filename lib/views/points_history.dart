@@ -50,45 +50,56 @@ class _PointsHistoryState extends State<PointsHistory> {
               title: Text('Your history:'),
 
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.bus_alert),
+            label: 'Bus',
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.history),
+            label: 'History',
+
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.wallet_giftcard),
+            label: 'My Priveleges',
+          )
+        ],
+      ),
             backgroundColor: miceLightGreen,
             body: SafeArea(
               minimum: EdgeInsets.all(25),
-              child: Column(
-                children: [
-                  Container(
-                    width: 400,
-                    height: 400,
-                    padding: EdgeInsets.all(10),
-                    child: ListView(
-                      padding: EdgeInsets.all(10),
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: miceDarkGreen,
+              child: Container(
+                width: 400,
+                padding: EdgeInsets.all(10),
+                child: ListView(
+                  padding: EdgeInsets.all(10),
+                  children: [
+                    for (PointHistory pointHistory in pointsHistoryList)
+                      Column(
+                        children: [
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                color: miceDarkGreen,
+                              ),
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
-                            borderRadius: BorderRadius.circular(15.0),
+                            child: ListTile(
+                              focusColor: miceLightGreen ,
+                              leading: Icon(Icons.tram,
+                                color: Colors.black,
+                              ),
+                              subtitle: Text(' ${pointHistory.creationTime.substring(0,10)} ${pointHistory.creationTime.substring(11,19)}'),
+                              title: Text('Points acquired: ${pointHistory.points}' ),
+                            ),
                           ),
-                          child: ListTile(
-                            focusColor: miceLightGreen ,
-                            leading: Text('Acquired at: 1'),
-                            title: Text('Points acquired: '),
-                          ),
-                        ),
-
-                        for (PointHistory pointHistory in pointsHistoryList)
-                          Column(
-                            children: [
-                              Text('Points acquired: ${pointHistory.points}'),
-                              SizedBox(height: 2),
-                              Text('Acquired at: ${pointHistory.creationTime}'),
-
-                            ],
-                          )
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      )
+                  ],
+                ),
               ),
             ),
           );
