@@ -27,104 +27,105 @@ class _SignInState extends State<SignIn> {
         : Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: miceLightGreen,
-
             body: Form(
-            key: _formKey,
-            child: SafeArea(
-              minimum: EdgeInsets.all(25),
-              child: Container(
-                margin: EdgeInsets.fromLTRB(10.0, 190.0, 10.0, 190.0),
-                padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20)
+              key: _formKey,
+              child: SafeArea(
+                minimum: EdgeInsets.all(25),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(10.0, 190.0, 10.0, 190.0),
+                  padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Login',
-                      style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 30),
-                    TextFormField(
-                      validator: (value) {
-                        return emailValidator(value, 'Please enter your email');
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Email',
+                      SizedBox(height: 30),
+                      TextFormField(
+                        validator: (value) {
+                          return emailValidator(
+                              value, 'Please enter your email');
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Email',
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            email = value;
+                          });
+                        },
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          email = value;
-                        });
-                      },
-                    ),
-                    SizedBox(height: 10),
-                    TextFormField(
-                      validator: (value) {
-                        return passwordValidator(value, 6);
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Password',
+                      SizedBox(height: 10),
+                      TextFormField(
+                        validator: (value) {
+                          return passwordValidator(value, 6);
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            password = value;
+                          });
+                        },
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          password = value;
-                        });
-                      },
-                    ),
-                    SizedBox(height: 30),
-                    SizedBox(
-                      width: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(
-                                  color: miceLightGreen,
-                                  width: 2.0,
+                      SizedBox(height: 30),
+                      SizedBox(
+                        width: 200,
+                        height: 50,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(
+                                    color: miceLightGreen,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          onPressed: () => _signInButton(),
-                          child: Text('Log In')),
-                    ),
-                    SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Don\'t have an account? '),
-                        GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, '/sign_up'),
-                          child: Text('Signup here',
-                            style: TextStyle(
-                              color: miceDarkGreen,
+                            onPressed: () => _signInButton(),
+                            child: Text('Log In')),
+                      ),
+                      SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Don\'t have an account? '),
+                          GestureDetector(
+                            onTap: () =>
+                                Navigator.pushNamed(context, '/sign_up'),
+                            child: Text(
+                              'Signup here',
+                              style: TextStyle(
+                                color: miceDarkGreen,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Visibility(
-                      child: Text(
-                        error,
-                        style: TextStyle(color: Colors.red),
+                        ],
                       ),
-                      visible: isVisibleError,
-                    ),
-
-                  ],
+                      Visibility(
+                        child: Text(
+                          error,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        visible: isVisibleError,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ));
+            ));
   }
 
   void _signInButton() async {
@@ -147,7 +148,7 @@ class _SignInState extends State<SignIn> {
           isVisibleError = false;
           isVisibleLoading = false;
         });
-        Navigator.pushNamed(context, '/menu');
+        Navigator.pushNamed(context, '/purchase_menu');
       }
     } else {
       setState(() {

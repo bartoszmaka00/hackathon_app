@@ -19,6 +19,7 @@ class StationProvider extends ChangeNotifier {
   final String stationGetUrl = '/travel_sessions.json';
   final String stationUpdateUrl = '/update_travel_sessions';
   final String stationDeleteUrl = '/delete_travel_sessions';
+  final String purchaseUrl = '/purchases/';
 
   Future<Station> getStationSession(String bearerToken) async {
     try {
@@ -143,6 +144,38 @@ class StationProvider extends ChangeNotifier {
       }
     } catch (e) {
       print(e);
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> purchasePoints(
+      String bearerToken, int price, int category, BuildContext context) async {
+    try {
+      final response = await http.post(Uri.https(url, purchaseUrl),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': bearerToken
+          },
+          body: jsonEncode(
+              <String, dynamic>{'price': price, 'category': category}));
+
+      print('purchase points: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        int points = (jsonDecode(response.body)['updated_points']);
+        double carbon =
+            double.parse((jsonDecode(response.body)['updated_carbon_saved']));
+        var authorizationProvider =
+            Provider.of<AuthorizationProvider>(context, listen: false);
+        authorizationProvider.updatePoints(points, carbon);
+        notifyListeners();
+        return true;
+      } else {
+        print('cos poszlo nie tak w purchase points');
+        return false;
+      }
+    } catch (e) {
+      print('purchase points $e');
       notifyListeners();
       return false;
     }
