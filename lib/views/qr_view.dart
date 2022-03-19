@@ -162,19 +162,28 @@ class _QRViewExampleState extends State<QRViewExample> {
           Provider.of<AuthorizationProvider>(context, listen: false);
       String? parsedResult = result?.code?.substring(8);
       int valueOfResult = int.parse(parsedResult!);
+      controller.pauseCamera();
       if (provider.station.startStation! > 0) {
-        bool wasUpdateSuccessful = await provider.updateStationSession(
+        bool wasCreateSuccessful = await provider.updateStationSession(
             authorization.user.bearerToken, valueOfResult);
-        if (wasUpdateSuccessful) {
-          Navigator.pop(context);
+        if (wasCreateSuccessful) {
+          Navigator.pushReplacementNamed(context, '/menu');
+        } else {
+          print("NIE UDALO SIE UPDATOWAC!!!");
+          Navigator.pushReplacementNamed(context, '/menu');
         }
       } else {
         bool wasUpdateSuccessful = await provider.createStationSession(
             authorization.user.bearerToken, valueOfResult);
         if (wasUpdateSuccessful) {
-          Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, '/menu');
+        } else {
+          print("NIE UDALO SIE CREATOWAC!!!!!!!!");
+          Navigator.pushReplacementNamed(context, '/menu');
         }
       }
+      Future.delayed(Duration(milliseconds: 1000));
+      controller.resumeCamera();
     });
   }
 

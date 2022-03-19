@@ -27,8 +27,11 @@ class StationProvider extends ChangeNotifier {
           'Authorization': bearerToken,
         },
       );
+      print('get ${response.statusCode}');
       if (response.statusCode == 200) {
-        _station = Station.fromJson(jsonDecode(response.body));
+        if (response.body != null) {
+          _station = Station.fromJson(jsonDecode(response.body));
+        }
         notifyListeners();
         return station;
       } else {
@@ -51,9 +54,10 @@ class StationProvider extends ChangeNotifier {
             'Authorization': bearerToken
           },
           body: jsonEncode(<String, dynamic>{
-            'travel_session': {'start_station': stationNumber}
+            'travel_session': {'start_station': stationNumber, 'travel_tool': 3}
           }));
-      if (response.statusCode == 200) {
+      print('create ${response.statusCode}');
+      if (response.statusCode == 201) {
         _station = Station.fromJson(jsonDecode(response.body));
         notifyListeners();
         return true;
@@ -80,16 +84,17 @@ class StationProvider extends ChangeNotifier {
           body: jsonEncode(<String, dynamic>{
             'travel_session': {'end_station': stationNumber}
           }));
+      print('update ${response.statusCode}');
       if (response.statusCode == 200) {
         _station = Station(
             startTime: DateTime(0),
             finishTime: DateTime(0),
-            startStation: -1,
-            finishStation: -1);
+            startStation: 0,
+            finishStation: 0);
         notifyListeners();
         return true;
       } else {
-        print('Something failed');
+        print('Something failed update');
         notifyListeners();
         return false;
       }
@@ -109,16 +114,17 @@ class StationProvider extends ChangeNotifier {
           'Authorization': bearerToken
         },
       );
+      print('delete ${response.statusCode}');
       if (response.statusCode == 200) {
         _station = Station(
             startTime: DateTime(0),
             finishTime: DateTime(0),
-            startStation: -1,
-            finishStation: -1);
+            startStation: 0,
+            finishStation: 0);
         notifyListeners();
         return true;
       } else {
-        print('Something failed');
+        print('Something failed delete');
         notifyListeners();
         return false;
       }
