@@ -34,6 +34,7 @@ class _SignUpState extends State<SignUp> {
               backgroundColor: miceDarkGreen,
               centerTitle: true,
               title: Text('Registration'),
+
             ),
             body: Form(
             key: _formKey,

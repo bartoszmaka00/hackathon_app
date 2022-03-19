@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 const Color miceDarkGreen = Color(0xFFF68D89B);
 const Color miceLightGreen = Color(0xFFF8DFFCD);
+
+const double mainMenuButonHeight=180.0;
+const double mainMenuButonWidth=300.0;
 class Palette {
   static const MaterialColor miceButtonColor = const MaterialColor(
     0xFFF68D89B, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
