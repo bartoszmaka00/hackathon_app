@@ -1,3 +1,4 @@
+import 'package:biker_mice_from_mars/shared/constans.dart';
 import 'package:flutter/material.dart';
 import 'shared/routes.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           title: 'CarbonLess',
           initialRoute: '/',
           theme: ThemeData(
-            primarySwatch: Colors.green,
+            primarySwatch: Palette.miceButtonColor,
           ),
         ),
       ),

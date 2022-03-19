@@ -1,4 +1,5 @@
 import 'package:biker_mice_from_mars/services/authorization.dart';
+import 'package:biker_mice_from_mars/shared/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:biker_mice_from_mars/shared/validators.dart';
@@ -24,59 +25,98 @@ class _SignInState extends State<SignIn> {
     return isVisibleLoading
         ? Loading()
         : Scaffold(
+            backgroundColor: miceLightGreen,
             body: Form(
             key: _formKey,
             child: SafeArea(
               minimum: EdgeInsets.all(25),
-              child: Column(
-                children: [
-                  TextFormField(
-                    validator: (value) {
-                      return emailValidator(value, 'Please enter your email');
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        email = value;
-                      });
-                    },
+              child: Container(
+                margin: EdgeInsets.fromLTRB(10.0, 200.0, 10.0, 200.0),
+                padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20)
                   ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    validator: (value) {
-                      return passwordValidator(value, 6);
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Password',
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      validator: (value) {
+                        return emailValidator(value, 'Please enter your email');
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          email = value;
+                        });
+                      },
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        password = value;
-                      });
-                    },
-                  ),
-                  ElevatedButton(
-                      onPressed: () => _signInButton(), child: Text('Log In')),
-                  ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, '/sign_up'),
-                      child: Text('Sign up')),
-                  Visibility(
-                    child: Text(
-                      error,
-                      style: TextStyle(color: Colors.red),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        return passwordValidator(value, 6);
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          password = value;
+                        });
+                      },
                     ),
-                    visible: isVisibleError,
-                  ),
-                  ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, '/qr_test'),
-                      child: Text('Test qr')),
-                  ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, '/loading'),
-                    child: Text('Test loading'),
-                  )
-                ],
+                    SizedBox(height: 30),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(
+                                  color: miceLightGreen,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () => _signInButton(),
+                          child: Text('Log In')),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(
+                                  color: miceLightGreen,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, '/sign_up'),
+                          child: Text('Sign up')),
+                    ),
+                    Visibility(
+                      child: Text(
+                        error,
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      visible: isVisibleError,
+                    ),
+
+                  ],
+                ),
               ),
             ),
           ));
