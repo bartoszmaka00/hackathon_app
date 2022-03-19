@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:biker_mice_from_mars/shared/validators.dart';
 import '../services/authorization.dart';
+import '../shared/constans.dart';
 import 'loading_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -27,95 +28,146 @@ class _SignUpState extends State<SignUp> {
     return isVisibleLoading
         ? Loading()
         : Scaffold(
+            backgroundColor: miceLightGreen,
             body: Form(
             key: _formKey,
             child: SafeArea(
               minimum: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  TextFormField(
-                    validator: (value) {
-                      return emailValidator(value, 'Please enter your email');
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        email = value;
-                      });
-                    },
+              child: Container(
+                margin: EdgeInsets.fromLTRB(10.0, 105.0, 10.0, 105.0),
+                padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(20)
                   ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    validator: (value) {
-                      return emailValidator(value, 'Please enter your name');
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Name',
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Registration',
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.black,
+                      ),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        name = value;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    validator: (value) {
-                      return emailValidator(
-                          value, 'Please enter your last name');
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Last name',
+                    SizedBox(height: 30),
+                    TextFormField(
+                      validator: (value) {
+                        return emailValidator(value, 'Please enter your email');
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          email = value;
+                        });
+                      },
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        lastName = value;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    validator: (value) {
-                      return passwordValidator(value, 6);
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Password',
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        return emailValidator(value, 'Please enter your name');
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Name',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          name = value;
+                        });
+                      },
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        password = value;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    validator: (value) {
-                      return passwordConfirmationValidator(value, password, 6);
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Password confirmation',
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        return emailValidator(
+                            value, 'Please enter your last name');
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Last name',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          lastName = value;
+                        });
+                      },
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        passwordConfirmation = value;
-                      });
-                    },
-                  ),
-                  ElevatedButton(
-                      onPressed: () => _signUpButton(), child: Text('Sign up')),
-                  ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, '/sign_in'),
-                      child: Text('Log in')),
-                  Visibility(
-                    child: Text(
-                      error,
-                      style: TextStyle(color: Colors.red),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        return passwordValidator(value, 6);
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          password = value;
+                        });
+                      },
                     ),
-                    visible: isVisibleError,
-                  )
-                ],
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        return passwordConfirmationValidator(value, password, 6);
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Password confirmation',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          passwordConfirmation = value;
+                        });
+                      },
+                    ),
+                    SizedBox(height: 30),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(
+                                  color: miceLightGreen,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () => _signUpButton(), child: Text('Sign up')),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(
+                                  color: miceLightGreen,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, '/sign_in'),
+                          child: Text('Log in')),
+                    ),
+                    Visibility(
+                      child: Text(
+                        error,
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      visible: isVisibleError,
+                    )
+                  ],
+                ),
               ),
             ),
           ));
