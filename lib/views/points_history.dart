@@ -44,18 +44,19 @@ class _PointsHistoryState extends State<PointsHistory> {
         ? Loading()
         : Scaffold(
             appBar: AppBar(
-              //toolbarHeight: 90,
-              elevation: 1,
-              backgroundColor: miceLightGreen,
-              centerTitle: true,
-              //automaticallyImplyLeading: false,
-              title: Text("Your history",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'ABeeZee',
-                ),)
-            ),
+                //toolbarHeight: 90,
+                elevation: 1,
+                backgroundColor: miceLightGreen,
+                centerTitle: true,
+                //automaticallyImplyLeading: false,
+                title: Text(
+                  "Your history",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ABeeZee',
+                  ),
+                )),
             backgroundColor: miceLightGreen,
             body: SafeArea(
               minimum: EdgeInsets.all(25),
@@ -77,19 +78,21 @@ class _PointsHistoryState extends State<PointsHistory> {
                             ),
                             child: ListTile(
                               focusColor: miceLightGreen,
-                              leading: getTypeByName(pointHistory.transportationType),
+                              leading: getTypeByName(
+                                  pointHistory.transportationType),
                               subtitle: Text(
-                                  '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}',
+                                '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}',
                                 style: TextStyle(
                                   fontFamily: 'ABeeZee',
                                 ),
                               ),
                               title: Text(
-                                  'Points acquired: ${pointHistory.points}',
+                                'Points acquired: ${pointHistory.points}',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: 'ABeeZee',
-                                ),),
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -101,16 +104,24 @@ class _PointsHistoryState extends State<PointsHistory> {
           );
   }
 }
-Icon getTypeByName(String name){
-  switch(name){
-    case "bus": return Icon(Icons.directions_bus_rounded,color: Colors.black);
-    case "train": return Icon(Icons.train,color: Colors.black);
-    case "bike": return Icon(Icons.pedal_bike_rounded,color: Colors.black);
-    case "tram":  return Icon(Icons.tram,color: Colors.black);
-    case "metro":  return Icon(Icons.subway_outlined,color: Colors.black);
-    case "food": return Icon(Icons.fastfood_rounded,color: Colors.black);
-    case "clothes": return Icon(Icons.watch_outlined,color: Colors.black);
-    default: return Icon(Icons.highlight_off,color: Colors.black);
+
+Icon getTypeByName(String name) {
+  switch (name) {
+    case "bus":
+      return Icon(Icons.directions_bus_rounded, color: Colors.black);
+    case "train":
+      return Icon(Icons.train, color: Colors.black);
+    case "bike":
+      return Icon(Icons.pedal_bike_rounded, color: Colors.black);
+    case "tram":
+      return Icon(Icons.tram, color: Colors.black);
+    case "metro":
+      return Icon(Icons.subway_outlined, color: Colors.black);
+    case "food":
+      return Icon(Icons.fastfood_rounded, color: Colors.black);
+    case "clothes":
+      return Icon(Icons.checkroom, color: Colors.black);
+    default:
+      return Icon(Icons.highlight_off, color: Colors.black);
   }
 }
-

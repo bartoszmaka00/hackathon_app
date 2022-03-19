@@ -63,21 +63,18 @@ class _MenuState extends State<Menu> {
               title: Image(
                 image: AssetImage('assets/logo.png'),
                 width: 110,
-                height: 110,),
-
+                height: 110,
+              ),
             ),
             body: SafeArea(
               minimum: EdgeInsets.all(25),
               child: Column(
                 children: [
-
                   Container(
                     padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
-
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -85,53 +82,69 @@ class _MenuState extends State<Menu> {
                         CircleAvatar(
                           radius: 60,
                           backgroundColor: micemiddleGreen,
-
                           child: Column(
                             children: [
-                              SizedBox(height: 45,),
-                              Text('Carbon saved:',
+                              SizedBox(
+                                height: 45,
+                              ),
+                              Text(
+                                'Carbon saved:',
                                 style: TextStyle(
-                                  color: Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                   fontFamily: 'ABeeZee',
+                                  fontSize: 12,
                                 ),
                               ),
-                              Text('${authorizationProvider.user.carbonFootprint} kg',
+                              Text(
+                                '${authorizationProvider.user.carbonFootprint} kg',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                  fontFamily: 'ABeeZee',
-                                ),
+                                    fontFamily: 'ABeeZee',
+                                    fontSize: 22),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         CircleAvatar(
                           radius: 60,
                           backgroundColor: micemiddleGreen,
                           child: Column(
                             children: [
-                              SizedBox(height: 45,),
-                              Text('Points:',
+                              SizedBox(
+                                height: 45,
+                              ),
+                              Text(
+                                'Points:',
                                 style: TextStyle(
-                                  color: Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                   fontFamily: 'ABeeZee',
-                                ),),
-                              Text('$points',
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                '$points',
                                 style: TextStyle(
-                                  color: Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                   fontFamily: 'ABeeZee',
-                                ),),
+                                  fontSize: 22,
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 30.0),
                     decoration: BoxDecoration(
@@ -160,8 +173,8 @@ class _MenuState extends State<Menu> {
                               : mainMenuButonHeightSmall,
                           child: ElevatedButton(
                             style: ButtonStyle(
-                              shape:
-                                  MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   side: BorderSide(
@@ -177,21 +190,23 @@ class _MenuState extends State<Menu> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.settings_overscan,
-                                  color: Colors.black,
+                                  Icons.directions_bus_rounded,
+                                  color: Colors.white,
                                   size: !isVisibleExit
                                       ? mainMenuButtonFontSize + 10
                                       : mainMenuButtonFontSizeSmall + 10,
                                 ),
+                                SizedBox(width: 10),
                                 Text(
-                                  ' Scan QR Code (J)',
+                                  isVisibleExit
+                                      ? 'Finish a ride'
+                                      : 'Start a ride',
                                   style: TextStyle(
                                     fontSize: !isVisibleExit
                                         ? mainMenuButtonFontSize
                                         : mainMenuButtonFontSizeSmall,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontFamily: 'ABeeZee',
-
                                   ),
                                 ),
                               ],
@@ -210,8 +225,8 @@ class _MenuState extends State<Menu> {
                               : mainMenuButonHeightSmall,
                           child: ElevatedButton(
                             style: ButtonStyle(
-                              shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   side: BorderSide(
@@ -227,19 +242,20 @@ class _MenuState extends State<Menu> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.settings_overscan,
-                                  color: Colors.black,
+                                  Icons.local_offer,
+                                  color: Colors.white,
                                   size: !isVisibleExit
                                       ? mainMenuButtonFontSize + 10
                                       : mainMenuButtonFontSizeSmall + 10,
                                 ),
+                                SizedBox(width: 10),
                                 Text(
-                                  ' Scan QR Code (P)',
+                                  'Purchase',
                                   style: TextStyle(
                                     fontSize: !isVisibleExit
                                         ? mainMenuButtonFontSize
                                         : mainMenuButtonFontSizeSmall,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontFamily: 'ABeeZee',
                                   ),
                                 ),
@@ -255,8 +271,8 @@ class _MenuState extends State<Menu> {
                           children: [
                             SizedBox(
                               width: !isVisibleExit
-                                  ? mainMenuButonWidth/2.25
-                                  : mainMenuButonWidthSmall/2.25,
+                                  ? mainMenuButonWidth / 2.25
+                                  : mainMenuButonWidthSmall / 2.25,
                               height: !isVisibleExit
                                   ? mainMenuButonHeight
                                   : mainMenuButonHeightSmall,
@@ -265,7 +281,8 @@ class _MenuState extends State<Menu> {
                                     shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
                                         side: BorderSide(
                                           color: micemiddleGreen,
                                           width: 2.0,
@@ -280,18 +297,19 @@ class _MenuState extends State<Menu> {
                                     children: [
                                       Icon(
                                         Icons.article_outlined,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         size: !isVisibleExit
                                             ? mainMenuButtonFontSize
-                                            : mainMenuButtonFontSize ,
+                                            : mainMenuButtonFontSize,
                                       ),
+                                      SizedBox(width: 4),
                                       Text(
                                         ' History',
                                         style: TextStyle(
                                           fontSize: !isVisibleExit
-                                              ? mainMenuButtonFontSize-8
-                                              : mainMenuButtonFontSize-8,
-                                          color: Colors.black,
+                                              ? mainMenuButtonFontSize - 8
+                                              : mainMenuButtonFontSize - 8,
+                                          color: Colors.white,
                                           fontFamily: 'ABeeZee',
                                         ),
                                       ),
@@ -303,8 +321,8 @@ class _MenuState extends State<Menu> {
                             ),
                             SizedBox(
                               width: !isVisibleExit
-                                  ? mainMenuButonWidth/2.25
-                                  : mainMenuButonWidthSmall/2.25,
+                                  ? mainMenuButonWidth / 2.25
+                                  : mainMenuButonWidthSmall / 2.25,
                               height: !isVisibleExit
                                   ? mainMenuButonHeight
                                   : mainMenuButonHeightSmall,
@@ -313,7 +331,8 @@ class _MenuState extends State<Menu> {
                                     shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
                                         side: BorderSide(
                                           color: micemiddleGreen,
                                           width: 2.0,
@@ -321,90 +340,98 @@ class _MenuState extends State<Menu> {
                                       ),
                                     ),
                                   ),
-                                onPressed: () =>
-                                    Navigator.pushNamed(context, '/privileges')
-                                        .then((_) => setState(() {
-                                      points = authorizationProvider
-                                          .getUpdatedPoints();
-                                    })),
+                                  onPressed: () => Navigator.pushNamed(
+                                          context, '/privileges')
+                                      .then((_) => setState(() {
+                                            points = authorizationProvider
+                                                .getUpdatedPoints();
+                                          })),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Icon(
                                         Icons.wallet_giftcard,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         size: !isVisibleExit
                                             ? mainMenuButtonFontSize
-                                            : mainMenuButtonFontSize ,
+                                            : mainMenuButtonFontSize,
                                       ),
+                                      SizedBox(width: 4),
                                       Text(
                                         ' Benefits',
                                         style: TextStyle(
                                           fontSize: !isVisibleExit
-                                              ? mainMenuButtonFontSize-8
-                                              : mainMenuButtonFontSize-8,
+                                              ? mainMenuButtonFontSize - 8
+                                              : mainMenuButtonFontSize - 8,
                                           fontFamily: 'ABeeZee',
-                                          color: Colors.black,
+                                          color: Colors.white,
                                         ),
                                       ),
                                     ],
                                   )),
                             ),
                           ],
-
                         ),
-                        SizedBox(height: !isVisibleExit
-                            ? 0
-                            : 15),
+                        SizedBox(height: !isVisibleExit ? 0 : 15),
                         Visibility(
                           visible: isVisibleExit,
                           child: SizedBox(
-                            width: mainMenuButonWidthSmall,
-                            height: mainMenuButonHeightSmall,
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(
-                                        color: miceLightGreen,
-                                        width: 2.0,
+                              width: mainMenuButonWidthSmall,
+                              height: mainMenuButonHeightSmall,
+                              child: Column(
+                                children: [
+                                  Text('You have already started a ride.'),
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          side: BorderSide(
+                                            color: miceLightGreen,
+                                            width: 2.0,
+                                          ),
+                                        ),
                                       ),
+                                    ),
+                                    onPressed: () async {
+                                      await stationProvider
+                                          .deleteStationSession(
+                                              authorizationProvider
+                                                  .user.bearerToken);
+                                      setState(() {
+                                        isVisibleExit = false;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.highlight_off_sharp,
+                                          color: Colors.red,
+                                          size: !isVisibleExit
+                                              ? mainMenuButtonFontSize + 10
+                                              : mainMenuButtonFontSizeSmall +
+                                                  10,
+                                        ),
+                                        Text(
+                                          ' Cancel active ride ',
+                                          style: TextStyle(
+                                            fontSize: !isVisibleExit
+                                                ? mainMenuButtonFontSize
+                                                : mainMenuButtonFontSizeSmall,
+                                            color: Colors.white,
+                                            fontFamily: 'ABeeZee',
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                                onPressed: () async {
-                                  await stationProvider.deleteStationSession(
-                                      authorizationProvider.user.bearerToken);
-                                  setState(() {
-                                    isVisibleExit = false;
-                                  });
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: Colors.red,
-                                      size: !isVisibleExit
-                                          ? mainMenuButtonFontSize + 10
-                                          : mainMenuButtonFontSizeSmall + 10,
-                                    ),
-                                    Text(
-                                      ' Cancel the ride ',
-                                      style: TextStyle(
-                                        fontSize: !isVisibleExit
-                                            ? mainMenuButtonFontSize
-                                            : mainMenuButtonFontSizeSmall,
-                                        color: Colors.black,
-                                        fontFamily: 'ABeeZee',
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          ),
-                        )
+                                ],
+                              )),
+                        ),
                       ],
                     ),
                   ),
