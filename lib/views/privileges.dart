@@ -18,6 +18,8 @@ class Privileges extends StatefulWidget {
 
 class _PrivilegesState extends State<Privileges> {
   bool isVisibleLoading = false;
+  int points = 0;
+  List<int> boughtPrivilegesIds = [];
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,9 @@ class _PrivilegesState extends State<Privileges> {
                 .user
                 .bearerToken);
     setState(() {
+      points = Provider.of<AuthorizationProvider>(context, listen: false)
+          .user
+          .points;
       isVisibleLoading = false;
     });
   }
@@ -49,6 +54,9 @@ class _PrivilegesState extends State<Privileges> {
         Provider.of<UserPrivilegesProvider>(context, listen: false);
     var authorizationProvider =
         Provider.of<AuthorizationProvider>(context, listen: false);
+    boughtPrivilegesIds = areAlreadyBought(
+        userPrivilegesProvider.userPrivileges, privilegesProvider.privileges);
+
     List<Privilege> privilegeList = privilegesProvider.privileges;
     List<UserPrivilege> userPrivilegeList =
         userPrivilegesProvider.userPrivileges;
@@ -83,8 +91,10 @@ class _PrivilegesState extends State<Privileges> {
                             userPrivilegeList =
                                 await userPrivilegesProvider.getUserPrivileges(
                                     authorizationProvider.user.bearerToken);
-                            authorizationProvider.updateOnlyPoints(points);
+                            authorizationProvider.updateOnlyPoints(
+                                points - privilegeList.elementAt(index).price);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: miceDarkGreen,
                               content: Text('Purchase successful'),
                             ));
                             setState(() {
@@ -92,12 +102,19 @@ class _PrivilegesState extends State<Privileges> {
                             });
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: miceDarkGreen,
                               content: Text('Purchase unsuccessful'),
                             ));
                           }
                         },
                         splashColor: Colors.blue,
                         child: Card(
+                          color:
+                              points >= privilegeList.elementAt(index).price ||
+                                      boughtPrivilegesIds.contains(
+                                          privilegeList.elementAt(index).id)
+                                  ? Colors.white
+                                  : Colors.grey[300],
                           shape: RoundedRectangleBorder(
                             side: BorderSide(
                               color: miceDarkGreen,
@@ -106,10 +123,27 @@ class _PrivilegesState extends State<Privileges> {
                           ),
                           child: ListTile(
                             focusColor: miceLightGreen,
-                            leading: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                            ),
+                            leading: boughtPrivilegesIds
+                                    .contains(privilegeList.elementAt(index).id)
+                                ? Icon(Icons.add_task, color: miceDarkGreen)
+                                : (points >=
+                                        privilegeList.elementAt(index).price
+                                    ? Icon(Icons.add, color: Colors.black)
+                                    : Icon(Icons.block_rounded,
+                                        color: Colors.black)),
+                            // leading: points >=
+                            //         privilegeList.elementAt(index).price
+                            //     ? (boughtPrivilegesIds.contains(
+                            //             privilegeList.elementAt(index).id)
+                            //         ? Icon(Icons.add_task, color: miceDarkGreen)
+                            //         : Icon(
+                            //             Icons.add,
+                            //             color: Colors.black,
+                            //           ))
+                            //     : Icon(
+                            //         Icons.block_rounded,
+                            //         color: Colors.black,
+                            //       ),
                             title: Text(privilegeList.elementAt(index).title),
                             subtitle:
                                 Text('${privilegeList.elementAt(index).price}'),
@@ -123,4 +157,19 @@ class _PrivilegesState extends State<Privileges> {
             ),
           );
   }
+}
+
+List<int> areAlreadyBought(
+    List<UserPrivilege> userPrivileges, List<Privilege> privileges) {
+  List<int> returnList = [];
+  List<int> ids = [];
+  for (Privilege privilege in privileges) {
+    ids.add(privilege.id);
+  }
+  for (UserPrivilege userPrivilege in userPrivileges) {
+    if (ids.contains(userPrivilege.id)) {
+      returnList.add(userPrivilege.id);
+    }
+  }
+  return returnList;
 }
