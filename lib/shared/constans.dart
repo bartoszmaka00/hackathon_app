@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 const Color miceDarkGreen = Color(0xFFF68D89B);
 const Color miceLightGreen = Color(0xFFF8DFFCD);
 
-const double mainMenuButonHeight=170.0;
+const double mainMenuButonHeight=100.0;
 const double mainMenuButonWidth=300.0;
 const double mainMenuButonHeightSmall=120.0;
 const double mainMenuButonWidthSmall=300.0;
 const double mainMenuButtonFontSize=30;
 const double mainMenuButtonFontSizeSmall=20;
+const double circlesize = 50;
 
 class Palette {
   static const MaterialColor miceButtonColor = const MaterialColor(
