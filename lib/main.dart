@@ -10,6 +10,7 @@ import 'shared/routes.dart';
 import 'package:provider/provider.dart';
 import 'services/authorization.dart';
 import 'services/station_provider.dart';
+import 'services/user_privileges_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AuthorizationProvider()),
         ChangeNotifierProvider(create: (context) => PointHistoryProvider()),
         ChangeNotifierProvider(create: (context) => StationProvider()),
-        ChangeNotifierProvider(create: (context) => PrivilegesProvider())
+        ChangeNotifierProvider(create: (context) => PrivilegesProvider()),
+        ChangeNotifierProvider(create: (context) => UserPrivilegesProvider())
       ],
       child: GestureDetector(
         onTap: () {
@@ -47,6 +49,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-

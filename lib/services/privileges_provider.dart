@@ -23,7 +23,6 @@ class PrivilegesProvider extends ChangeNotifier {
         _privileges.clear();
         Map<String, dynamic> map = json.decode(response.body);
         List privileges = map['resources'];
-        print('dupa');
         privileges.forEach(
             (privilege) => _privileges.add(Privilege.fromJson(privilege)));
         notifyListeners();
