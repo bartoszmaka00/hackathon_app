@@ -13,13 +13,14 @@ class PointHistoryProvider extends ChangeNotifier {
     try {
       final response = await http.get(Uri.https(url, urlGetPoints),
           headers: <String, String>{
-            'Content-Type': 'application-json; charset=UTF-8',
+            'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': bearerToken
           });
       print(response.statusCode);
       if (response.statusCode == 200) {
         _pointHistoryList.clear();
-        List points = jsonDecode(response.body);
+        Map<String, dynamic> map = json.decode(response.body);
+        List points = map['resources'];
         points.forEach(
             (point) => _pointHistoryList.add(PointHistory.fromJson(point)));
         notifyListeners();
