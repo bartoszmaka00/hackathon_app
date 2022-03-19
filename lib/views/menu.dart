@@ -55,11 +55,16 @@ class _MenuState extends State<Menu> {
             resizeToAvoidBottomInset: false,
             backgroundColor: miceLightGreen,
             appBar: AppBar(
+              toolbarHeight: 90,
               elevation: 1,
               backgroundColor: miceLightGreen,
               centerTitle: true,
               automaticallyImplyLeading: false,
-              title: Text('You\'ve got $points points!'),
+              title: Image(
+                image: AssetImage('assets/logo.png'),
+                width: 110,
+                height: 110,),
+
             ),
             body: SafeArea(
               minimum: EdgeInsets.all(25),
@@ -78,35 +83,48 @@ class _MenuState extends State<Menu> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          // padding: EdgeInsets.symmetric(vertical: circlesize, horizontal: circlesize),
-                          // margin: EdgeInsets.fromLTRB(2.5, 10.0, 2.5, 10.0),
-                          // decoration: BoxDecoration(
-                          //   color: miceLightGreen,
-                          //   borderRadius: BorderRadius.all(Radius.circular(circlesize+50)),
-                          // ),
                           radius: 60,
+                          backgroundColor: micemiddleGreen,
+
                           child: Column(
                             children: [
                               SizedBox(height: 45,),
-                              Text('Carbon saved:'),
-                              Text('${authorizationProvider.user.carbonFootprint} kg'),
+                              Text('Carbon saved:',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  fontFamily: 'Courgette',
+                                ),
+                              ),
+                              Text('${authorizationProvider.user.carbonFootprint} kg',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  fontFamily: 'Courgette',
+                                ),
+                              ),
                             ],
                           ),
                         ),
                         SizedBox(width: 10,),
                         CircleAvatar(
-                          // padding: EdgeInsets.symmetric(vertical: circlesize, horizontal: circlesize),
-                          // margin: EdgeInsets.fromLTRB(2.5, 10.0, 2.5, 10.0),
-                          // decoration: BoxDecoration(
-                          //   color: miceLightGreen,
-                          //   borderRadius: BorderRadius.all(Radius.circular(circlesize+50)),
-                          // ),
                           radius: 60,
+                          backgroundColor: micemiddleGreen,
                           child: Column(
                             children: [
                               SizedBox(height: 45,),
-                              Text('Points:'),
-                              Text('$points'),
+                              Text('Points:',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  fontFamily: 'Courgette',
+                                ),),
+                              Text('$points',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  fontFamily: 'Courgette',
+                                ),),
                             ],
                           ),
                         ),
@@ -123,8 +141,6 @@ class _MenuState extends State<Menu> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                            'So far you\'ve saved ${authorizationProvider.user.carbonFootprint} kgs of carbon'),
                         //Text('Session time : '+ now.difference(stationProvider.station.startTime!).inMinutes.toString()),
                         // Text('Session time : '+ (DateTime.now().difference(DateTime(2022, 3, 19)).inMinutes/60).floor().toString() + ' ' +(DateTime.now().difference(DateTime(2022, 3, 19)).inSeconds/3600).floor().toString()
                         // ),
@@ -150,7 +166,7 @@ class _MenuState extends State<Menu> {
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   side: BorderSide(
-                                    color: miceLightGreen,
+                                    color: micemiddleGreen,
                                     width: 2.0,
                                   ),
                                 ),
@@ -163,7 +179,7 @@ class _MenuState extends State<Menu> {
                               children: [
                                 Icon(
                                   Icons.settings_overscan,
-                                  color: Colors.white,
+                                  color: Colors.black54,
                                   size: !isVisibleExit
                                       ? mainMenuButtonFontSize + 10
                                       : mainMenuButtonFontSizeSmall + 10,
@@ -174,7 +190,8 @@ class _MenuState extends State<Menu> {
                                     fontSize: !isVisibleExit
                                         ? mainMenuButtonFontSize
                                         : mainMenuButtonFontSizeSmall,
-                                    color: Colors.white,
+                                    color: Colors.black54,
+                                    fontFamily: 'Courgette',
                                   ),
                                 ),
                               ],
@@ -198,7 +215,7 @@ class _MenuState extends State<Menu> {
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(
-                                      color: miceLightGreen,
+                                      color: micemiddleGreen,
                                       width: 2.0,
                                     ),
                                   ),
@@ -211,7 +228,7 @@ class _MenuState extends State<Menu> {
                                 children: [
                                   Icon(
                                     Icons.article_outlined,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     size: !isVisibleExit
                                         ? mainMenuButtonFontSize + 10
                                         : mainMenuButtonFontSizeSmall + 10,
@@ -222,7 +239,8 @@ class _MenuState extends State<Menu> {
                                       fontSize: !isVisibleExit
                                           ? mainMenuButtonFontSize
                                           : mainMenuButtonFontSizeSmall,
-                                      color: Colors.white,
+                                      color: Colors.black54,
+                                      fontFamily: 'Courgette',
                                     ),
                                   ),
                                 ],
@@ -243,7 +261,7 @@ class _MenuState extends State<Menu> {
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(
-                                      color: miceLightGreen,
+                                      color: micemiddleGreen,
                                       width: 2.0,
                                     ),
                                   ),
@@ -256,7 +274,7 @@ class _MenuState extends State<Menu> {
                                 children: [
                                   Icon(
                                     Icons.wallet_giftcard,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     size: !isVisibleExit
                                         ? mainMenuButtonFontSize + 10
                                         : mainMenuButtonFontSizeSmall + 10,
@@ -267,7 +285,8 @@ class _MenuState extends State<Menu> {
                                       fontSize: !isVisibleExit
                                           ? mainMenuButtonFontSize
                                           : mainMenuButtonFontSizeSmall,
-                                      color: Colors.white,
+                                      fontFamily: 'Courgette',
+                                      color: Colors.black54,
                                     ),
                                   ),
                                 ],
