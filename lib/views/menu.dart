@@ -1,8 +1,11 @@
 import 'package:biker_mice_from_mars/services/authorization.dart';
+import 'package:biker_mice_from_mars/services/station_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../shared/constans.dart';
+
+import 'loading_screen.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
@@ -12,7 +15,27 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  bool isVisibleLoading = false;
   @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<Null> _load() async {
+    setState(() {
+      isVisibleLoading = true;
+    });
+    await Provider.of<StationProvider>(context, listen: false)
+        .getStationSession(
+            Provider.of<AuthorizationProvider>(context, listen: false)
+                .user
+                .bearerToken);
+    setState(() {
+      isVisibleLoading = false;
+    });
+  }
+
   Widget build(BuildContext context) {
     var authorizationProvider =
         Provider.of<AuthorizationProvider>(context, listen: false);

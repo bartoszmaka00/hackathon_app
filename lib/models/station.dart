@@ -12,7 +12,7 @@ class Station {
     return Station(
         startStation: body['start_station'],
         finishStation: body['end_station'],
-        startTime: body['created_at'],
-        finishTime: body['updated_at']);
+        startTime: DateTime.parse(body['created_at']),
+        finishTime: DateTime.parse(body['updated_at']));
   }
 }

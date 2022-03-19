@@ -31,8 +31,6 @@ class _PointsHistoryState extends State<PointsHistory> {
             .user
             .bearerToken);
     setState(() {
-      print(Provider.of<PointHistoryProvider>(context, listen: false)
-          .pointHistoryList);
       isVisibleLoading = false;
     });
   }

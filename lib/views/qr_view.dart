@@ -1,8 +1,12 @@
+import 'package:biker_mice_from_mars/services/authorization.dart';
+import 'package:biker_mice_from_mars/services/station_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:developer';
 import 'dart:io';
+import 'package:provider/provider.dart';
+import 'package:biker_mice_from_mars/services/station_provider.dart';
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
@@ -144,10 +148,28 @@ class _QRViewExampleState extends State<QRViewExample> {
     setState(() {
       this.controller = controller;
     });
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
       setState(() {
         result = scanData;
       });
+      var provider = Provider.of<StationProvider>(context, listen: false);
+      var authorization =
+          Provider.of<AuthorizationProvider>(context, listen: false);
+      String? parsedResult = result?.code?.substring(8);
+      int valueOfResult = int.parse(parsedResult!);
+      if (provider.station.startStation! > 0) {
+        bool wasUpdateSuccessful = await provider.updateStationSession(
+            authorization.user.bearerToken, valueOfResult);
+        if (wasUpdateSuccessful) {
+          Navigator.pop(context);
+        }
+      } else {
+        bool wasUpdateSuccessful = await provider.createStationSession(
+            authorization.user.bearerToken, valueOfResult);
+        if (wasUpdateSuccessful) {
+          Navigator.pop(context);
+        }
+      }
     });
   }
 
