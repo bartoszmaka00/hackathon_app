@@ -70,10 +70,7 @@ class _PointsHistoryState extends State<PointsHistory> {
                             ),
                             child: ListTile(
                               focusColor: miceLightGreen,
-                              leading: Icon(
-                                Icons.tram,
-                                color: Colors.black,
-                              ),
+                              leading: getTypeByName(pointHistory.transportationType),
                               subtitle: Text(
                                   '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}'),
                               title: Text(
@@ -89,3 +86,16 @@ class _PointsHistoryState extends State<PointsHistory> {
           );
   }
 }
+Icon getTypeByName(String name){
+  switch(name){
+    case "bus": return Icon(Icons.directions_bus_rounded,color: Colors.black);
+    case "train": return Icon(Icons.train,color: Colors.black);
+    case "bike": return Icon(Icons.pedal_bike_rounded,color: Colors.black);
+    case "tram":  return Icon(Icons.tram,color: Colors.black);
+    case "metro":  return Icon(Icons.subway_outlined,color: Colors.black);
+    case "food": return Icon(Icons.fastfood_rounded,color: Colors.black);
+    case "clothes": return Icon(Icons.watch_outlined,color: Colors.black);
+    default: return Icon(Icons.highlight_off,color: Colors.black);
+  }
+}
+
