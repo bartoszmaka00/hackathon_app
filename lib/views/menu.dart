@@ -83,6 +83,7 @@ class _MenuState extends State<Menu> {
                     // SizedBox(
                     //   height: 20,
                     // ),
+                    SizedBox(height: 20,),
                     SizedBox(
                       width: !isVisibleExit
                           ? mainMenuButonWidth
