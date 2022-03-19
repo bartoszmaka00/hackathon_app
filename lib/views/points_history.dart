@@ -118,7 +118,7 @@ Icon getTypeByName(String name) {
     case "metro":
       return Icon(Icons.subway_outlined, color: Colors.black);
     case "food":
-      return Icon(Icons.fastfood_rounded, color: Colors.black);
+      return Icon(Icons.dining_outlined, color: Colors.black);
     case "clothes":
       return Icon(Icons.checkroom, color: Colors.black);
     default:

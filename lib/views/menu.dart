@@ -242,7 +242,7 @@ class _MenuState extends State<Menu> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.local_offer,
+                                  Icons.discount,
                                   color: Colors.white,
                                   size: !isVisibleExit
                                       ? mainMenuButtonFontSize + 10
