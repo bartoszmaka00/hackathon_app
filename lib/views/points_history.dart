@@ -48,26 +48,24 @@ class _PointsHistoryState extends State<PointsHistory> {
               backgroundColor: miceDarkGreen,
               centerTitle: true,
               title: Text('Your history:'),
-
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.bus_alert),
-            label: 'Bus',
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.history),
-            label: 'History',
-
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.wallet_giftcard),
-            label: 'My Priveleges',
-          )
-        ],
-      ),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: 1,
+              items: [
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.bus_alert),
+                  label: 'Bus',
+                ),
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.history),
+                  label: 'History',
+                ),
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.wallet_giftcard),
+                  label: 'My Priveleges',
+                )
+              ],
+            ),
             backgroundColor: miceLightGreen,
             body: SafeArea(
               minimum: EdgeInsets.all(25),
@@ -88,12 +86,15 @@ class _PointsHistoryState extends State<PointsHistory> {
                               borderRadius: BorderRadius.circular(15.0),
                             ),
                             child: ListTile(
-                              focusColor: miceLightGreen ,
-                              leading: Icon(Icons.tram,
+                              focusColor: miceLightGreen,
+                              leading: Icon(
+                                Icons.tram,
                                 color: Colors.black,
                               ),
-                              subtitle: Text(' ${pointHistory.creationTime.substring(0,10)} ${pointHistory.creationTime.substring(11,19)}'),
-                              title: Text('Points acquired: ${pointHistory.points}' ),
+                              subtitle: Text(
+                                  '${pointHistory.transportationType} ${pointHistory.creationTime.substring(0, 10)} ${pointHistory.creationTime.substring(11, 19)}'),
+                              title: Text(
+                                  'Points acquired: ${pointHistory.points}'),
                             ),
                           ),
                         ],

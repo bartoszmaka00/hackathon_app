@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:biker_mice_from_mars/models/station.dart';
 import 'package:biker_mice_from_mars/services/authorization.dart';
 import 'package:biker_mice_from_mars/services/station_provider.dart';
 import 'package:flutter/material.dart';
@@ -160,26 +163,29 @@ class _QRViewExampleState extends State<QRViewExample> {
       var provider = Provider.of<StationProvider>(context, listen: false);
       var authorization =
           Provider.of<AuthorizationProvider>(context, listen: false);
-      String? parsedResult = result?.code?.substring(8);
-      int valueOfResult = int.parse(parsedResult!);
+      Map<String, dynamic> map = jsonDecode(result!.code!)['travel_session'];
       controller.pauseCamera();
+      // String? parsedResult = result?.code?.substring(8);
+      // int valueOfResult = int.parse(parsedResult!);
       if (provider.station.startStation! > 0) {
         bool wasCreateSuccessful = await provider.updateStationSession(
-            authorization.user.bearerToken, valueOfResult);
+            authorization.user.bearerToken, map['start_station'], context);
         if (wasCreateSuccessful) {
-          Navigator.pushReplacementNamed(context, '/menu');
+          Navigator.pushNamed(context, '/menu');
         } else {
           print("NIE UDALO SIE UPDATOWAC!!!");
-          Navigator.pushReplacementNamed(context, '/menu');
+          Navigator.pushNamed(context, '/menu');
         }
       } else {
         bool wasUpdateSuccessful = await provider.createStationSession(
-            authorization.user.bearerToken, valueOfResult);
+            authorization.user.bearerToken,
+            map['start_station'],
+            map['travel_tool']);
         if (wasUpdateSuccessful) {
-          Navigator.pushReplacementNamed(context, '/menu');
+          Navigator.pushNamed(context, '/menu');
         } else {
           print("NIE UDALO SIE CREATOWAC!!!!!!!!");
-          Navigator.pushReplacementNamed(context, '/menu');
+          Navigator.pushNamed(context, '/menu');
         }
       }
       Future.delayed(Duration(milliseconds: 1000));

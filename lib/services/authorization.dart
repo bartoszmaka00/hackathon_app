@@ -13,7 +13,13 @@ class AuthorizationProvider extends ChangeNotifier {
   AuthorizationProvider();
 
   User _user = User(
-      bearerToken: '', name: '', lastName: '', email: '', points: 0, id: -1);
+      bearerToken: '',
+      name: '',
+      lastName: '',
+      email: '',
+      points: 0,
+      id: -1,
+      carbonFootprint: 0.0);
   User get user => _user;
   Status _isAuthorized = Status.uninitialized;
   Status get isAuthorized => _isAuthorized;
@@ -32,6 +38,7 @@ class AuthorizationProvider extends ChangeNotifier {
               'password': password,
             }
           }));
+      print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
         _user = User.fromJson(response.headers, jsonDecode(response.body));
         _isAuthorized = Status.authorized;
@@ -43,6 +50,7 @@ class AuthorizationProvider extends ChangeNotifier {
         return user;
       }
     } catch (e) {
+      print(e);
       _isAuthorized = Status.unauthorized;
       notifyListeners();
       return user;
@@ -80,5 +88,14 @@ class AuthorizationProvider extends ChangeNotifier {
       notifyListeners();
       return user;
     }
+  }
+
+  void updatePoints(int points) {
+    user.points = points;
+    notifyListeners();
+  }
+
+  int getUpdatedPoints() {
+    return user.points;
   }
 }
