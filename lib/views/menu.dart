@@ -124,7 +124,7 @@ class _MenuState extends State<Menu> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ABeeZee',
-                                  fontSize: 20,
+                                  fontSize: 12,
                                 ),
                               ),
                               Text(
